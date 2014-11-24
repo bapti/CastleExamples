@@ -4,29 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommandPattern.Commands;
-using TypedFactory.Providers;
+using CommandPattern.Infrastructure;
 
 namespace CommandPattern.Services
 {
     public class CommandProcessor
     {
-        private readonly IHandlerProvider handlerProvider;
+        private readonly ICommandHandlerFactory factory;
 
         public CommandProcessor(
-            IHandlerProvider handlerProvider
+            ICommandHandlerFactory factory
             )
         {
-            this.handlerProvider = handlerProvider;
+            this.factory = factory;
         }
 
         public void ProcessCommand(ICommand command)
         {
-            var handlers = handlerProvider.GetAll(command);
+            var handler = factory.Create(command);
 
-            foreach(var handler in handlers)
-            {
-                handler.Handle(command);
-            }
+            handler.Handle(command);
         }
     }
 }

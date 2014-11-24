@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using CommandPattern.Commands;
 using CommandPattern.Handlers;
 
-namespace TypedFactory.Providers
+namespace CommandPattern.Infrastructure
 {
-    public interface IHandlerProvider : IDisposable
+    public interface ICommandHandlerFactory : IDisposable
     {
-        ICommandHandler<TCommand>[] GetAll<TCommand>(TCommand command)
+        ICommandHandler<TCommand> Create<TCommand>(TCommand command)
             where TCommand : class, ICommand;
 
-        void Release<TCommand>(ICommandHandler<TCommand>[] handlers)
+        void Release<TCommand>(ICommandHandler<TCommand> commandHandler)
             where TCommand : class, ICommand;
     }
 }

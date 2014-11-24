@@ -45,15 +45,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\DriveCommand.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Handlers\DriveHandler.cs" />
-    <Compile Include="Handlers\DriveHandlerDecorator.cs" />
-    <Compile Include="Handlers\ICommandHandler.cs" />
+    <Compile Include="Commands\Accelerate\AccelerateCommand.cs" />
+    <Compile Include="Commands\Brake\BrakeCommand.cs" />
+    <Compile Include="Commands\Brake\BrakeCommandHandler.cs" />
+    <Compile Include="Handlers\LoggingDecorator.cs" />
+    <Compile Include="Infrastructure\ICommand.cs" />
+    <Compile Include="Commands\Accelerate\AccelerateCommandHandler.cs" />
+    <Compile Include="Handlers\TimingDecorator.cs" />
+    <Compile Include="Infrastructure\ICommandHandler.cs" />
+    <Compile Include="Infrastructure\Logger.cs" />
+    <Compile Include="Infrastructure\Metrics.cs" />
     <Compile Include="Ioc\CommandPatternBootstrapper.cs" />
     <Compile Include="Ioc\CommandPatternInstaller.cs" />
-    <Compile Include="Providers\IHandlerProvider.cs" />
-    <Compile Include="Services\CommandProcessor.cs" />
+    <Compile Include="Infrastructure\ICommandHandlerFactory.cs" />
+    <Compile Include="Infrastructure\CommandProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

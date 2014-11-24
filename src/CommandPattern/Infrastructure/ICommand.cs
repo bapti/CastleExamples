@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommandPattern.Commands
+namespace CommandPattern.Infrastructure
 {
     public interface ICommand
     {
+        string Name { get; }
     }
 }

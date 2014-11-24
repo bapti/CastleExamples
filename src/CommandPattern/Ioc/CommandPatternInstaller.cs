@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using TypedFactory.Providers;
 using Castle.Facilities.TypedFactory;
 using CommandPattern.Handlers;
 using CommandPattern.Services;
+using CommandPattern.Infrastructure;
 
 namespace TypedFactory.Ioc
 {
@@ -21,14 +21,24 @@ namespace TypedFactory.Ioc
             )
         {
             container.Register(
+                Component
+                    .For(typeof(ICommandHandler<>))
+                    .ImplementedBy(typeof(LoggingDecorator<>))
+                    .LifestyleTransient(),
+                
+                Component
+                    .For(typeof(ICommandHandler<>))
+                    .ImplementedBy(typeof(TimingDecorator<>))
+                    .LifestyleTransient(),
+                
                 Classes
                     .FromThisAssembly()
                     .BasedOn(typeof(ICommandHandler<>))
-                    .WithServiceAllInterfaces()
+                    .WithServiceBase()
                     .LifestyleTransient(),
 
                 Component
-                    .For<IHandlerProvider>()
+                    .For<ICommandHandlerFactory>()
                     .AsFactory(),
 
                 Component

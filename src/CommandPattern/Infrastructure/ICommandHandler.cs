@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CommandPattern.Commands;
 
-namespace CommandPattern.Handlers
+namespace CommandPattern.Infrastructure
 {
     public interface ICommandHandler<TCommand>
         where TCommand : class, ICommand
