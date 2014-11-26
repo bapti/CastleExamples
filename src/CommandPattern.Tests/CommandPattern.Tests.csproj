@@ -54,7 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandPatternTests.cs" />
+    <Compile Include="CommandPattern_Explicit_Tests.cs" />
+    <Compile Include="CommandPattern_OpenGeneric_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
