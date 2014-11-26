@@ -10,7 +10,7 @@ namespace CommandPattern.Infrastructure
 {
     public interface ICommandHandlerFactory : IDisposable
     {
-        ICommandHandler<TCommand> Create<TCommand>(TCommand command)
+        ICommandHandler<TCommand> Create<TCommand>()
             where TCommand : class, ICommand;
 
         void Release<TCommand>(ICommandHandler<TCommand> commandHandler)

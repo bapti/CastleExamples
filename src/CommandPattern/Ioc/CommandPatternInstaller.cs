@@ -8,7 +8,6 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Castle.Facilities.TypedFactory;
 using CommandPattern.Handlers;
-using CommandPattern.Services;
 using CommandPattern.Infrastructure;
 
 namespace TypedFactory.Ioc
@@ -34,7 +33,7 @@ namespace TypedFactory.Ioc
                 Classes
                     .FromThisAssembly()
                     .BasedOn(typeof(ICommandHandler<>))
-                    .WithServiceBase()
+                    .WithServiceAllInterfaces()
                     .LifestyleTransient(),
 
                 Component

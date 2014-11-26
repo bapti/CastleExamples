@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CommandPattern.Commands;
 using CommandPattern.Infrastructure;
 
-namespace CommandPattern.Services
+namespace CommandPattern.Infrastructure
 {
     public class CommandProcessor
     {
@@ -19,9 +19,10 @@ namespace CommandPattern.Services
             this.factory = factory;
         }
 
-        public void ProcessCommand(ICommand command)
+        public void ProcessCommand<TCommand>(TCommand command)
+            where TCommand : class, ICommand
         {
-            var handler = factory.Create(command);
+            var handler = factory.Create<TCommand>();
 
             handler.Handle(command);
         }

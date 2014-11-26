@@ -26,6 +26,8 @@ namespace CommandPattern.Handlers
 
         public void Handle(TCommand command)
         {
+            command.Log.Add("timing");
+
             Stopwatch sw = new Stopwatch();
             sw.Start();
 

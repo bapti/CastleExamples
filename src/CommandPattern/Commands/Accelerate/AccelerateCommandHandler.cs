@@ -13,6 +13,7 @@ namespace CommandPattern.Commands.Accelerate
     {
         public void Handle(AccelerateCommand command)
         {
+            command.Log.Add("accelerate");
             Console.WriteLine("Performing accelerate command");
         }
     }

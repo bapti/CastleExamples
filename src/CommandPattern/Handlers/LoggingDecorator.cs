@@ -24,6 +24,8 @@ namespace CommandPattern.Handlers
 
         public void Handle(TCommand command)
         {
+            command.Log.Add("logging");
+            
             logger.Info("Logging command " + command.Name);
 
             decoratedCommand.Handle(command);

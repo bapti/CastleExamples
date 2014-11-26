@@ -9,5 +9,7 @@ namespace CommandPattern.Infrastructure
     public interface ICommand
     {
         string Name { get; }
+
+        List<String> Log { get; set; }
     }
 }
